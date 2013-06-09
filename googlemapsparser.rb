@@ -3,11 +3,12 @@
 #
 
 require "net/http"
-require 'minitest/autorun'
+#require 'minitest/autorun'
 require "active_support"
 
 class Zipcode
   def self.distance_to_from(from, to)
+    # can I move this out of the method?
     url = URI("http://maps.googleapis.com/maps/api/distancematrix/json?origins=#{from}&destinations=#{to}&mode=bicycling&sensor=false")
     response = Net::HTTP.get(url)
     parsed_response = ActiveSupport::JSON.decode(response)

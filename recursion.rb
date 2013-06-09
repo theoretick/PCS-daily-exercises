@@ -1,14 +1,11 @@
 #
-#
+# Sum of Cubes implementation using recursion and tail recursion
 #
 
 require 'minitest/autorun'
 
 def soc_tail(num, total=0)
   if num == 1
-
-  else
-
   end
 end
 
