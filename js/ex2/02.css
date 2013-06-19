@@ -1,0 +1,40 @@
+body {
+   color: #000;
+   font-family: Helvetica, Arial, sans-serif;
+   text-align: center;
+}
+
+#wrap {
+  margin: 0 auto;
+  width: 320px;
+}
+
+.boxes {
+  background-color: lightgray;
+  height: 80px;
+  width: 80px;
+
+  margin: 10px;
+  display: inline-block;
+}
+
+.bluebox {
+  background-color: blue;
+}
+
+#congrats {
+  display: none;
+  font-size: 30px;
+}
+
+#wipe {
+  display:block;
+  text-align: center;
+}
+
+.highlight {
+   border: 1px solid #888;
+   font-style: italic;
+   margin: 0.5em 0;
+   padding: 0.5em;
+}
