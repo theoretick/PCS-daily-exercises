@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $('a').on('click', function() {
+  $('button').on('click', function() {
     $('div.boxes').removeClass('bluebox');
   });
 
@@ -13,24 +13,19 @@ $(document).ready(function() {
     else {
       $('div#congrats').show();
     };
-
-    var row = $(this).data('row');
-    var col = $(this).data('col');
-
     proximities($(this));
-
-  }); // end of div.boxes click event handling
-
+  });
 });
-
 
 var proximities = function(position) {
+    // sets neighboring box based on pos of clicked box
 
-    if (position.data('row')
-    $("div[data-row="+(parseInt(row)-1)+"]").toggleClass('bluebox');
-    $("div[data-row="+(parseInt(row)-1)+"]").toggleClass('bluebox');
+    var row = parseInt(position.data('row'));
+    var col = parseInt(position.data('col'));
 
-    $("div.boxes[data-row="+col+"]").toggleClass('bluebox');
+    $("div[data-row="+(row-1)+"][data-col="+(col)+"]").toggleClass('bluebox');
+    $("div[data-row="+(row+1)+"][data-col="+(col)+"]").toggleClass('bluebox');
+    $("div[data-row="+(row)+"][data-col="+(col-1)+"]").toggleClass('bluebox');
+    $("div[data-row="+(row)+"][data-col="+(col+1)+"]").toggleClass('bluebox');
 
-
-});
+};

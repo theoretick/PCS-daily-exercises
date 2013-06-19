@@ -4,10 +4,9 @@ body {
    text-align: center;
 }
 
-#wrap {
+/*#wrap {
   margin: 0 auto;
-  width: 520px;
-}
+}*/
 
 .boxes {
   background-color: lightgray;
@@ -18,30 +17,23 @@ body {
   border-radius: 5px;
 }
 
-.boxes:hover {
+/*.boxes:hover {
   background-color: gray;
-}
+}*/
 
 .bluebox {
   background-color: blue;
 }
 
-#congrats {
-  display: none;
-  font-size: 30px;
+.redbox {
+  background-color: red;
 }
 
-button#wipe {
+/* wipe and reset buttons */
+button {
   font-size: 20px;
   border-radius: 5px;
   margin: 10px;
   display:inline-block;
   text-align: center;
-}
-
-.highlight {
-   border: 1px solid #888;
-   font-style: italic;
-   margin: 0.5em 0;
-   padding: 0.5em;
 }
