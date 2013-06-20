@@ -1,12 +1,8 @@
 body {
    color: #000;
    font-family: Helvetica, Arial, sans-serif;
-   text-align: center;
+   /*text-align: center;*/
 }
-
-/*#wrap {
-  margin: 0 auto;
-}*/
 
 .boxes {
   background-color: lightgray;
@@ -17,9 +13,9 @@ body {
   border-radius: 5px;
 }
 
-/*.boxes:hover {
+.boxes:hover {
   background-color: gray;
-}*/
+}
 
 .bluebox {
   background-color: blue;

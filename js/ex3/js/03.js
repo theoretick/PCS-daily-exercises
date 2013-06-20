@@ -1,18 +1,12 @@
 $(document).ready(function() {
 
   $('button#wipe').on('click', wipe);
-
   $('button#reset').on('click', reset);
 
   // add/change color on boxes
-  $(".container").on('click', '.boxes', function () {
-    if ($(this).hasClass('redbox') || $(this).hasClass('bluebox')) {
-      $(this).toggleClass('bluebox');
-      $(this).toggleClass('redbox');
-    }
-    else {
-      $(this).toggleClass('bluebox');
-    }
+  $(".container-fluid").on('click', '.boxes', function () {
+
+    colorCheck($(this));
     addVert($(this));
     addHoriz($(this));
   });
@@ -20,8 +14,8 @@ $(document).ready(function() {
 
 // button for wipe
 var wipe = function() {
-  $('div.boxes').removeClass('bluebox');
-  $('div.boxes').removeClass('redbox');
+
+  $('div.boxes').removeClass('bluebox redbox');
 };
 
 // button for reset
@@ -30,31 +24,63 @@ var reset = function() {
   wipe();
 };
 
+var colorCheck = function(position) {
+  if (position.hasClass('redbox') || position.hasClass('bluebox')) {
+    position.toggleClass('bluebox');
+    position.toggleClass('redbox');
+  }
+  // else {
+  //   position.toggleClass('bluebox');
+  // }
+};
+
 var addHoriz = function(position) {
-    // sets neighboring box based on pos of clicked box
 
-  var newBox = $('<div class="boxes generated"></div>');
+  col = parseInt(position.data('col'));
 
-  newBox.insertAfter(position);
-  newBox.insertBefore(position);
+  if ((position.index() + 1) === position.parent().length) {
+  // position is last element, append one to the right
+    var leftBox = position.clone().addClass('generated').attr('data-col',col + 1);
+    position.after(leftBox);
+  }
+  else if (position.index() === 0) {
+    var rightBox = position.clone().addClass('generated').attr('data-col',col - 1);
+    position.before(rightBox);
+  }
+  else {
 
-  // parseInt(position.data('row'))
-  // attr('data-row',row);
-
-    // var row = parseInt(position.data('row'));
-    // var col = parseInt(position.data('col'));
+  };
 };
 
 var addVert = function(position) {
-  var newRow = $('<div class="row generated"><div class="boxes generated"></div></div>');
-  newRow.attr('data-row',row = row + 1)
 
-  newRow.insertAfter(position.parent());
-  newRow.insertBefore(position.parent());
+  row = parseInt(position.parent().data('row'));
+  // $('div:not([class~="generated"])')
 
-  // $("div[data-row="+(row-1)+"][data-col="+(col)+"]").toggleClass('bluebox');
-  // $("div[data-row="+(row+1)+"][data-col="+(col)+"]").toggleClass('bluebox');
-  // $("div[data-row="+(row)+"][data-col="+(col-1)+"]").toggleClass('bluebox');
-  // $("div[data-row="+(row)+"][data-col="+(col+1)+"]").toggleClass('bluebox');
+  if ($('div[data-row=' + (row + 1) + ']').length === 0) {
+    // if no row above, add row
+    var upRow = position.parent().clone().attr('data-row',row + 1)
+        .addClass('generated');
+    // fixes classes for children
+    upRow.children().addClass('generated').removeClass('bluebox redbox');
+    position.parent().before(upRow);
+  }
+  else if ($('div[data-row=' + (row + 1) + ']').length < position.parent().length) {
+    // if row above is shorter, add box to row above
+    position.parent().prev().append(position.parent().get(position.index()).clone());
+  };
 
+  if ($('div[data-row=' + (row + -1) + ']').length === 0) {
+    // if no row below, add row
+    var downRow = position.parent().clone().attr('data-row',row - 1)
+        .addClass('generated');
+    // fixes classes for children
+    downRow.children().addClass('generated').removeClass('bluebox redbox');
+
+    position.parent().after(downRow);
+  }
+  else if ($('div[data-row=' + (row - 1) + ']').length < position.parent().length) {
+    // if row below is shorter, add box to row above
+    position.parent().next().append(position.parent().get(position.index()).clone());
+  };
 };
