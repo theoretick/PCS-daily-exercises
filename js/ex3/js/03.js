@@ -5,10 +5,10 @@ $(document).ready(function() {
 
   // add/change color on boxes
   $(".container-fluid").on('click', '.boxes', function () {
-
-    colorCheck($(this));
-    addVert($(this));
+    colorClicked($(this));
+    // colorNeighbors($(this));
     addHoriz($(this));
+    addVert($(this));
   });
 });
 
@@ -24,19 +24,30 @@ var reset = function() {
   wipe();
 };
 
-var colorCheck = function(position) {
-  if (position.hasClass('redbox') || position.hasClass('bluebox')) {
+var colorClicked = function(position) {
+  if (!position.hasClass('bluebox') && !position.hasClass('redbox')) {
     position.toggleClass('bluebox');
-    position.toggleClass('redbox');
   }
-  // else {
-  //   position.toggleClass('bluebox');
-  // }
+  else if (!position.hasClass('bluebox redbox') {
+    position.toggleClass(
+  };
+};
+
+var colorNeighbors = function(position) {
+
+  else if (position.hasClass('redbox')) {
+    // position.toggleClass('bluebox');
+    // position.toggleClass('redbox');
+  }
+  else {
+    position.toggleClass('bluebox');
+  }
+
 };
 
 var addHoriz = function(position) {
 
-  col = parseInt(position.data('col'));
+  col = parseInt(position.data('col'), 10);
   // col = position.index();
 
   if ((position.index() + 1) === position.parent().children().length) {
@@ -53,26 +64,23 @@ var addHoriz = function(position) {
 
 var addVert = function(position) {
 
-  row = parseInt(position.parent().data('row'));
-  // $('div:not([class~="generated"])')
+  row = parseInt(position.parent().data('row'), 10);
 
   if ($('div[data-row=' + (row + 1) + ']').children().length === 0) {
-    // WORKING
     // if no row above, add row
+
     var upRow = position.parent().clone().attr('data-row',row + 1)
         .addClass('generated');
     // fixes classes for children
     upRow.children().addClass('generated').removeClass('bluebox redbox');
     position.parent().before(upRow);
   }
-  else if ($('div[data-row=' + (row + 1) + ']').children().length < position.parent().children().length) {
+  else if ($('div[data-row=' + (row + 1) + ']').children().length < position.siblings().length) {
     // if row above is shorter, add box to row above
-    console.log('if row above is shorter, add box to row above');
-    position.parent().prev().append(position.parent().get(position.index()).clone());
+    position.parent().prev().append(position.clone());
   };
 
   if ($('div[data-row=' + (row + -1) + ']').length === 0) {
-    // WORKING
     // if no row below, add row
     var downRow = position.parent().clone().attr('data-row',row - 1)
         .addClass('generated');
@@ -81,9 +89,8 @@ var addVert = function(position) {
 
     position.parent().after(downRow);
   }
-  else if ($('div[data-row=' + (row - 1) + ']').children().length < position.parent().children().length) {
+  else if ($('div[data-row=' + (row - 1) + ']').children().length < position.siblings().length) {
     // if row below is shorter, add box to row above
-    console.log('if row below is shorter, add box to row above');
-    position.parent().next().append(position.parent().get(position.index()).clone());
+    position.parent().next().append(position.clone());
   };
 };
