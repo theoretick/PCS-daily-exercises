@@ -1,0 +1,47 @@
+body {
+   color: #000;
+   font-family: Helvetica, Arial, sans-serif;
+   text-align: center;
+}
+
+#wrap {
+  margin: 0 auto;
+  width: 520px;
+}
+
+.boxes {
+  background-color: lightgray;
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.boxes:hover {
+  background-color: gray;
+}
+
+.bluebox {
+  background-color: blue;
+}
+
+#ajaxtest {
+  /*visibility: hidden;*/
+  font-size: 30px;
+}
+
+button#wipe {
+  font-size: 20px;
+  border-radius: 5px;
+  margin: 10px;
+  display:inline-block;
+  text-align: center;
+}
+
+.highlight {
+   border: 1px solid #888;
+   font-style: italic;
+   margin: 0.5em 0;
+   padding: 0.5em;
+}
