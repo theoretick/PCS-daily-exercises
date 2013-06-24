@@ -2,16 +2,18 @@
 // Mai furst testt, yaayy
 //
 
-describe('5js for ex5', function() {
+describe('5.js', function() {
 
-  describe('5 should load correctly', function() {
-
-    it('should find homeActive function', function() {
-      expect(homeActive()).toBeDefined();
-    });
-
-    // it('on load button should exist', function() {
-    // });
-
+  it('should find homeActive function', function() {
+    console.log(homeActive);
+    expect(homeActive).toBeDefined();
   });
+
+  it('should not find booew function', function() {
+    expect(booew).toBeUndefined();
+  });
+
+  it('on load button should exist', function() {
+  });
+
 });

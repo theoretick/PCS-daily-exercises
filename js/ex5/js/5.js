@@ -19,21 +19,28 @@ var homeActive = function() {
   $('#homenav').addClass('active');
 };
 
+var booew;
+
 // activeTransfer removes and applies 'active' class to focused link
 var activeTransfer = function(){
   $('.navbar-inner').on('click', 'li', function(){
-    $('li.active').removeAttr({class:'active'});
-    $(this).addClass('active');
+    if ($(this) === ) {
+
+    };
+    else {
+      $('li.active').removeClass('active');
+      $(this).addClass('active');
+    };
   });
 };
 
-var dropdownTransfer = function() {
-  $('li');
-};
+// var dropdownTransfer = function() {
+//   $('li');
+// };
 
 var bootModal = function() {
    var $modelOverlay =
-   $('<a href="#myModal" role="button" class="btn" data-toggle="modal">\
+   $('<a href="#myModal" role="button" class="btn btn-danger" data-toggle="modal">\
     Big ol\' fashun buttin</a>\
       <div id="myModal" class="modal hide fade" tabindex="-1"\
       role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
@@ -63,6 +70,7 @@ var bootModal = function() {
 $(document).ready(function() {
   addLoremFuckingIpsum();
   bootModal();
+
   homeActive();
   activeTransfer();
 });
