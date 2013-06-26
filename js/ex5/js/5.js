@@ -19,12 +19,10 @@ var homeActive = function() {
   $('#homenav').addClass('active');
 };
 
-var booew;
-
 // activeTransfer removes and applies 'active' class to focused link
 var activeTransfer = function(){
   $('.navbar-inner').on('click', 'li', function(){
-    if ($(this) === ) {
+    if ($(this).text()textString, function) {
 
     };
     else {
@@ -33,6 +31,7 @@ var activeTransfer = function(){
     };
   });
 };
+
 
 // var dropdownTransfer = function() {
 //   $('li');
